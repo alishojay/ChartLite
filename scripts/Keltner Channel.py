@@ -1,0 +1,8 @@
+indicator("Keltner Channel", overlay=True)
+length = input("Length", 20, min=1)
+mult = input("Multiplier", 1.5, min=0.1, step=0.1)
+mid, up, lo = ta.kc(df, length, mult)
+plot(mid, "Mid", color="#2962FF", width=1)
+u = plot(up, "Upper", color="#2962FF", width=1)
+l = plot(lo, "Lower", color="#2962FF", width=1)
+fill(u, l, "rgba(41,98,255,0.06)")

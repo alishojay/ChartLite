@@ -1,0 +1,7 @@
+indicator("Donchian Channel", overlay=True)
+length = input("Length", 20, min=1)
+up, lo, mid = ta.donchian(df, length)
+u = plot(up, "Upper", color="#2962FF", width=1)
+plot(mid, "Mid", color="#FF6D00", width=1)
+l = plot(lo, "Lower", color="#2962FF", width=1)
+fill(u, l, "rgba(41,98,255,0.06)")

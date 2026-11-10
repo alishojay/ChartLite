@@ -1,0 +1,6 @@
+indicator("Pivot High/Low", overlay=True)
+left = input("Left", 5, min=1)
+right = input("Right", 5, min=1)
+ph, pl = ta.pivots(df, left, right)
+marker(ph.notna(), "", position="above", shape="circle", color=color.red, size=0.6)
+marker(pl.notna(), "", position="below", shape="circle", color=color.green, size=0.6)

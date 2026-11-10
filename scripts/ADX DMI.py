@@ -1,0 +1,8 @@
+indicator("ADX / DMI", overlay=False)
+n = input("DI Length", 14, min=1)
+m = input("ADX Smoothing", 14, min=1)
+p, mi, a = ta.adx(df, n, m)
+plot(p, "+DI", color="#2962FF", width=1)
+plot(mi, "-DI", color="#FF6D00", width=1)
+plot(a, "ADX", color="#F23645", width=2)
+hline(25, "25", "#787B86")

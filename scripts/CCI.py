@@ -1,0 +1,6 @@
+indicator("CCI", overlay=False)
+length = input("Length", 20, min=1)
+plot(ta.cci(df, length), "CCI", color="#2962FF", width=1)
+a = hline(100, "100", "#787B86")
+b = hline(-100, "-100", "#787B86")
+fill(a, b, "rgba(41,98,255,0.08)")

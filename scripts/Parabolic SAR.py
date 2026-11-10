@@ -1,0 +1,6 @@
+indicator("Parabolic SAR", overlay=True)
+start = input("Start", 0.02, step=0.01)
+inc = input("Increment", 0.02, step=0.01)
+mx = input("Max", 0.2, step=0.01)
+s = ta.sar(df, start, inc, mx)
+plot(s, "SAR", style="circles", color=np.where(s < df.close, "#26A69A", "#F23645"), width=2)

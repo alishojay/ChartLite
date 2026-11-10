@@ -1,0 +1,6 @@
+indicator("Money Flow Index", overlay=False)
+length = input("Length", 14, min=1)
+plot(ta.mfi(df, length), "MFI", color="#7E57C2", width=1)
+a = hline(80, "80", "#787B86")
+b = hline(20, "20", "#787B86")
+fill(a, b, "rgba(126,87,194,0.08)")

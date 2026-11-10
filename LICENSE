@@ -1,0 +1,30 @@
+ChartLite Free License
+
+Copyright (c) 2026 <YOUR NAME>. All rights reserved.
+
+Permission is granted, free of charge, to any person obtaining a copy of this
+software and associated files (the "Software") to use, copy and modify the
+Software for personal, non-commercial purposes only.
+
+You may NOT, without prior written permission from the copyright holder:
+  1. sell, sublicense, rent, or otherwise commercialise the Software or any
+     work derived from it;
+  2. offer the Software, or any work derived from it, to third parties as a
+     hosted or managed service;
+  3. redistribute the Software or modified versions of it, except that you
+     may share unmodified copies of this repository, including this license.
+
+You must keep this notice and the notices of the third-party components
+listed in THIRD_PARTY_NOTICES.md in all copies.
+
+Third-party components (for example TradingView Lightweight Charts) are
+licensed under their own terms, which are not changed by this license.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+THE SOFTWARE IS NOT FINANCIAL ADVICE. TRADING INVOLVES SUBSTANTIAL RISK.

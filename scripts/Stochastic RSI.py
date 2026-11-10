@@ -1,0 +1,7 @@
+indicator("Stochastic RSI", overlay=False)
+kk, dd = ta.stochrsi(df.close, 14, 14, 3, 3)
+plot(kk, "%K", color="#2962FF", width=1)
+plot(dd, "%D", color="#FF6D00", width=1)
+a = hline(80, "80")
+b = hline(20, "20")
+fill(a, b, "rgba(41,98,255,0.08)")

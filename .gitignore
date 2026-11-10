@@ -1,0 +1,17 @@
+# local config and personal data
+config.json
+.env
+my_scripts/
+*.log
+
+# python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

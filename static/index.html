@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ChartLite</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header id="topbar">
+    <div class="group">
+      <input id="symInput" readonly spellcheck="false" autocomplete="off" title="Search symbol (or just start typing)">
+      <select id="marketSel" title="Market"><option value="futures">Futures (USDT-M)</option><option value="spot">Spot</option></select>
+    </div>
+    <div class="group" id="tfBar"></div>
+    <div class="group">
+      <select id="typeSel" title="Chart type">
+        <option value="candles">Candles</option><option value="hollow">Hollow</option><option value="bars">Bars</option>
+        <option value="ha">Heikin Ashi</option><option value="line">Line</option><option value="area">Area</option>
+      </select>
+      <button id="logBtn" class="tbtn" title="Log scale">log</button>
+      <button id="volBtn" class="tbtn on" title="Volume">Vol</button>
+      <button id="shotBtn" class="tbtn" title="Download screenshot (PNG)">📷</button>
+      <button id="fitBtn" class="tbtn" title="Reset view">⤢</button>
+      <button id="themeBtn" class="tbtn" title="Day / Night">☀</button>
+    </div>
+    <div id="priceBox"><span id="lastPrice">—</span> <span id="lastChg"></span></div>
+    <div id="status" class="status">…</div>
+    <button id="panelBtn" class="tbtn on" title="Show/hide side panel">☰</button>
+  </header>
+  <div id="main">
+    <aside id="tools">
+      <button data-tool="cursor" class="tool on" title="Cursor (Esc)"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2.5v15M2.5 10h15"/></svg></button><button data-tool="trend" class="tool" title="Trend line"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16L16 4"/><circle cx="4" cy="16" r="1.8"/><circle cx="16" cy="4" r="1.8"/></svg></button><button data-tool="ray" class="tool" title="Ray"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15L17 5"/><circle cx="4" cy="15" r="1.8"/><path d="M13.5 4.5l3.5.5-.5 3.5"/></svg></button><button data-tool="hline" class="tool" title="Horizontal line"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10h16"/><circle cx="10" cy="10" r="1.8"/></svg></button><button data-tool="vline" class="tool" title="Vertical line"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v16"/><circle cx="10" cy="10" r="1.8"/></svg></button><button data-tool="rect" class="tool" title="Rectangle"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="13" height="9" rx="1"/></svg></button><button data-tool="fib" class="tool" title="Fib retracement"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h14M3 8h14M3 12h14M3 16h14" stroke-width="1.2"/><path d="M5 16L15 4" stroke-dasharray="2 2"/></svg></button><button data-tool="text" class="tool" title="Text"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h12M10 5v11M7.5 16h5"/></svg></button><button data-tool="measure" class="tool" title="Measure"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13L13 3l4 4L7 17z"/><path d="M6 10l2 2M9 7l2 2M12 4l2 2"/></svg></button><button data-tool="eraser" class="tool" title="Eraser (click a drawing)"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13l7-8 5 4-6 7H6z"/><path d="M9 16h8"/></svg></button>
+      <div class="tsep"></div>
+      <button id="magnetBtn" class="tool" title="Magnet: snap to O/H/L/C"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v7a5 5 0 0010 0V3h-3v7a2 2 0 01-4 0V3z"/></svg></button>
+      <button id="hideDraw" class="tool" title="Show / hide drawings"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10s3-6 8-6 8 6 8 6-3 6-8 6-8-6-8-6z"/><circle cx="10" cy="10" r="2.5"/></svg></button>
+      <button id="clearDraw" class="tool" title="Delete all drawings"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 6h11M8 6V4h4v2M6 6l.8 11h6.4L14 6"/></svg></button>
+    </aside>
+    <section id="chartWrap">
+      <div id="chart"></div>
+      <canvas id="draw"></canvas>
+      <div id="legend"></div>
+      <div id="dtool" class="hidden">
+        <input type="color" id="dtColor" title="Color">
+        <select id="dtW" title="Line width"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+        <button id="dtText" title="Edit text">✎</button>
+        <button id="dtDup" title="Duplicate">⧉</button>
+        <button id="dtDel" title="Delete (Del)">🗑</button>
+      </div>
+      <div id="toast"></div>
+    </section>
+    <aside id="panel">
+      <nav id="tabs">
+        <button data-tab="ind" class="on">Indicators</button>
+        <button data-tab="code">Code</button>
+        <button data-tab="watch">Watch</button>
+        <button data-tab="console">Console</button>
+      </nav>
+      <div id="tab-ind" class="tab on">
+        <div class="row"><input id="indFilter" placeholder="Search indicators…"></div>
+        <div class="sect">On chart</div>
+        <div id="activeList"></div>
+        <div class="sect">Library <small>(scripts/ and my_scripts/)</small></div>
+        <div id="libList"></div>
+      </div>
+      <div id="tab-code" class="tab">
+        <div class="row">
+          <input id="scName" placeholder="Script name">
+          <button id="scRun" class="btn primary" title="Ctrl+Enter">▶ Add / Update</button>
+        </div>
+        <div class="row">
+          <button id="scSave" class="btn">💾 Save</button>
+          <button id="scNew" class="btn">New</button>
+          <span id="scInfo" class="muted"></span>
+        </div>
+        <textarea id="editor" spellcheck="false"></textarea>
+        <div id="editorErr" class="err"></div>
+      </div>
+      <div id="tab-watch" class="tab"><div id="watchList"></div></div>
+      <div id="tab-console" class="tab"><button id="clrLog" class="btn" style="margin:6px">Clear</button><pre id="console"></pre></div>
+    </aside>
+  </div>
+</div>
+<div id="modal" class="hidden"><div id="modalBox"></div></div>
+<script src="lightweight-charts.js"></script>
+<script src="extras.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+indicator("Bollinger Bands", overlay=True)
+length = input("Length", 20, min=1)
+mult = input("StdDev", 2.0, min=0.1, step=0.1)
+basis, upper, lower = ta.bbands(df.close, length, mult)
+plot(basis, "Basis", color="#FF6D00", width=1)
+u = plot(upper, "Upper", color="#2962FF", width=1)
+l = plot(lower, "Lower", color="#2962FF", width=1)
+fill(u, l, "rgba(41,98,255,0.08)")

@@ -1,0 +1,7 @@
+{
+  "port": 8765,
+  "proxy": null,
+  "futures_base": "https://fapi.binance.com",
+  "spot_base": "https://api.binance.com",
+  "spot_fallback_base": "https://data-api.binance.vision"
+}
