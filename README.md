@@ -82,7 +82,7 @@ Available in every script: `df` (columns `open high low close volume time hl2 hl
 This free edition is the core of the project. The Pro edition adds, among other things, Elliott Wave / NEoWave tools,
 advanced drawing tools, order-flow views, server-side alerts (Telegram / webhook) and a strategy back-tester.
 
-Contact: `<YOUR CONTACT>`
+Contact: `ali.shzh2@gmail.com`
 
 ## Disclaimer
 
